@@ -23,7 +23,7 @@ class CategoryController extends Controller
 		foreach($categories as $cat){
 			$cat->fillable=getCategoryContent($cat->path);
 		}
-    	return response()->json('categories' => $categories);
+    	return response()->json($categories);
 	}
 	public static function getCategoryContent($path)
 	{
@@ -34,7 +34,7 @@ class CategoryController extends Controller
 			foreach($content as $c)
 				$c->fillable=getCategoryContent($c->$path);
 
-			
+
 		return $content; 
 
 	}					
