@@ -3,9 +3,9 @@ return [
 	'default' => env('DB_CONNECTION'),
 	'fetch' => PDO::FETCH_CLASS,
 	'migrations' => 'migrations',
-	'driver' => 'mysql',
     'connections' => [
 		'mysql' => [
+			'driver' => 'mysql',
 		    'host' => env('DB_HOST'),
 		    'database' => env('DB_DATABASE'),
 		    'username' => env('DB_USERNAME'),
