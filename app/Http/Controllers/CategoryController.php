@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Http\Response;
 use PDO;
 class CategoryController extends Controller
 {
@@ -18,16 +17,25 @@ class CategoryController extends Controller
     }
 
 	public static function getList(){
-		$categories = Category::select('id','name')
+		$categories = array(Category::select('id','name','path')
 								->where('path','rlike','^[0-9]$')
-								->get();
-    	return response()->json(array('categories' => $categories));
+								->get());
+		foreach($categories as $cat){
+			$cat->fillable=getCategoryContent($cat->path);
+		}
+    	return response()->json('categories' => $categories);
 	}
 	public static function getCategoryContent($path)
 	{
-		$content = Category::select('id','name')
-								->where('path','like',$path.'_%')
-								->get();
-		return response()->json(array('data' => $content));
+		$content = array(Category::select('id','name','path')
+								->where('path','like',$path.'.%')
+								->get());
+		if(!empty($content))
+			foreach($content as $c)
+				$c->fillable=getCategoryContent($c->$path);
+
+			
+		return $content; 
+
 	}					
 }

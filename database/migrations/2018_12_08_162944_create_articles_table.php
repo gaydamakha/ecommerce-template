@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->integer('price');
             $table->string('image_path',100);
             $table->string('brand',100);
-            $table->string('category',50);//not a foreign key because article can not to have a category
+            $table->string('category',50);//not a foreign key because article can to not have a category
             $table->text('description');
             $table->timestamps();
         });
