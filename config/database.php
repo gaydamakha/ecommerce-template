@@ -3,6 +3,7 @@ return [
 	'default' => env('DB_CONNECTION'),
 	'fetch' => PDO::FETCH_CLASS,
 	'migrations' => 'migrations',
+	'driver' => 'mysql',
     'connections' => [
 		'mysql' => [
 		    'host' => env('DB_HOST'),
