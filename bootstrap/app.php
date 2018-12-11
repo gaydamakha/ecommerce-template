@@ -100,13 +100,13 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    require __DIR__.base_path().'/public/routes/web.php';
+    require base_path().'/public/routes/web.php';
 });
 
 $app->router->group([
     'prefix' => 'api',
 ], function ($router) {
-    require __DIR__.base_path().'/public/routes/api.php';
+    require base_path().'/public/routes/api.php';
 });
 
 
