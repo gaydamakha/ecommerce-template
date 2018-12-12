@@ -34,11 +34,11 @@ class CategoryController extends Controller
 
 
 
-		echo implode("|",$categories);
+		
 
 
 		foreach($categories as $cat){
-			echo $cat->path;
+			echo $cat.name;
 			//$cat->fillable=self::getCategoryContent($cat->path);
 		}
     	return response()->json($categories);
