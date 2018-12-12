@@ -23,10 +23,7 @@ class CategoryController extends Controller
 		if(!empty($content))
 			foreach($content as $c)
 				$c->fillable=self::getCategoryContent($c->$path);
-
-
-		return $content; 
-
+		return $content;
 	}		
 	public static function getList(){
 		$categories = array(Category::select('id','name','path')
