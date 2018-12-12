@@ -7,7 +7,6 @@ $router->get('/',  function () {
 });
 $router->group(['prefix' => 'categories'], function () use ($router) {
 	$router->get('/',  function () {
-		cc::countProductsCategories();
     	return cc::getList();
 	});
 });

@@ -29,6 +29,7 @@ class CategoryController extends Controller
 		return $content;
 	}		
 	public static function getList(){
+		self::countProductsCategories();
 		$categories = Category::select('id','name','path','count')
 								->where('path','rlike','^[0-9]$')
 								->get();
@@ -39,20 +40,19 @@ class CategoryController extends Controller
 	}
 	//Function counting available products for one category
 	//will be called every time after updating of "articles" table
-	public static function countProducts($category){
-		$count= Article::where('category','like',$category['name'])
+	public static function countProducts($catname){
+		$count= Article::where('category','like',$catname)
 						->count();
 		return $count;
-		
 	}
+	//Function counting available for every category
 	public static function countProductsCategories(){
 		$categories = Category::select('id','name','count')
 								->get();
 		foreach($categories as $cat){
-			$count=self::countProducts($cat);
+			$count=self::countProducts($cat['name']);
 			Category::where('id',$cat['id'])
 					->update(['count'=>$count]);
 		}					
 	}
-	//TODO: function counting available for every category
 }
