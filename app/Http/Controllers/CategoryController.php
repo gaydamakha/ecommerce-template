@@ -20,19 +20,26 @@ class CategoryController extends Controller
 		$content = array(Category::select('id','name','path')
 								->where('path','like',$path.'.%')
 								->get());
-		if(!empty($content))
-			foreach($content as $c)
+		if(!empty($content){
+			foreach($content as $c){
 				$c->fillable=self::getCategoryContent($c->path);
+			}
+		}
 		return $content;
 	}		
 	public static function getList(){
 		$categories = array(Category::select('id','name','path')
-								->where('path','rlike','^[0-9]$')
+								//->where('path','rlike','^[0-9]$')
 								->get());
 
+
+
 		echo implode("|",$categories);
+
+
 		foreach($categories as $cat){
-			$cat->fillable=self::getCategoryContent($cat->path);
+			echo $cat->path;
+			//$cat->fillable=self::getCategoryContent($cat->path);
 		}
     	return response()->json($categories);
 	}
