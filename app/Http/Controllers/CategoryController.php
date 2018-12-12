@@ -30,8 +30,8 @@ class CategoryController extends Controller
 								->where('path','rlike','^[0-9]$')
 								->get());
 
+			echo $categories;
 		foreach($categories as $cat){
-			echo $cat;
 			$cat->fillable=self::getCategoryContent($cat->path);
 		}
     	return response()->json($categories);
