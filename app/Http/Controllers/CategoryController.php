@@ -18,10 +18,10 @@ class CategoryController extends Controller
     public static function getCategoryContent($path)
 	{
 		$content = Category::select('id','name','path')
-								->where('path','regexp',$path."\.[0-9]{1}$")
+								->where('path','regexp',$path.".[0-9]$")
 								->get();
-
-		echo implode("|",array($content));
+		echo $path."[0-9]$";
+		//echo implode("|",array($content));
 		echo "\n"; 	
 		if(!empty($content)){
 			foreach($content as $c){
