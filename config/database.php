@@ -8,6 +8,7 @@ return [
 			'driver' => 'mysql',
 		    'host' => env('DB_HOST'),
 		    'database' => env('DB_DATABASE'),
+		    'port' => env('DB_PORT'),
 		    'username' => env('DB_USERNAME'),
 		    'password' => env('DB_PASSWORD'),
 		    'charset' => 'utf8',

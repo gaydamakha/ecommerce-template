@@ -7,7 +7,7 @@ class Category extends Model {
 
 	protected $table = 'categories';
 	
-    protected $fillable = [];
+    protected $categories = [];
 
     protected $dates = [];
 

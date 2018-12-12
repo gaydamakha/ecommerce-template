@@ -17,29 +17,25 @@ class CategoryController extends Controller
     }
     public static function getCategoryContent($path)
 	{
-		$content = array(Category::select('id','name','path')
-								->where('path','like',$path.'.%')
-								->get());
+		$content = Category::select('id','name','path')
+								->where('path','regexp',$path."\.[0-9]{1}$")
+								->get();
+
+		echo implode("|",array($content));
+		echo "\n"; 	
 		if(!empty($content)){
 			foreach($content as $c){
-				$c->fillable=self::getCategoryContent($c->path);
+				$c->categories=self::getCategoryContent($c['path']);
 			}
 		}
 		return $content;
 	}		
 	public static function getList(){
-		$categories = array(Category::select('id','name','path')
-								//->where('path','rlike','^[0-9]$')
-								->get());
-
-
-
-		
-
-
+		$categories = Category::select('id','name','path')
+								->where('path','regexp','^[0-9]$')
+								->get();
 		foreach($categories as $cat){
-			echo $cat.name;
-			//$cat->fillable=self::getCategoryContent($cat->path);
+			$cat->categories=self::getCategoryContent($cat['path']);
 		}
     	return response()->json($categories);
 	}
