@@ -15,17 +15,7 @@ class CategoryController extends Controller
     {
         //
     }
-
-	public static function getList(){
-		$categories = array(Category::select('id','name','path')
-								->where('path','rlike','^[0-9]$')
-								->get());
-		foreach($categories as $cat){
-			$cat->fillable=self::getCategoryContent($cat->path);
-		}
-    	return response()->json($categories);
-	}
-	public static function getCategoryContent($path)
+    public static function getCategoryContent($path)
 	{
 		$content = array(Category::select('id','name','path')
 								->where('path','like',$path.'.%')
@@ -37,5 +27,15 @@ class CategoryController extends Controller
 
 		return $content; 
 
-	}					
+	}		
+	public static function getList(){
+		$categories = array(Category::select('id','name','path')
+								->where('path','rlike','^[0-9]$')
+								->get());
+		foreach($categories as $cat){
+			$cat->fillable=self::getCategoryContent($cat->path);
+		}
+    	return response()->json($categories);
+	}
+				
 }
