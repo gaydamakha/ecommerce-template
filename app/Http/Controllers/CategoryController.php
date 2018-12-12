@@ -20,7 +20,7 @@ class CategoryController extends Controller
 		$content = array(Category::select('id','name','path')
 								->where('path','like',$path.'.%')
 								->get());
-		if(!empty($content){
+		if(!empty($content)){
 			foreach($content as $c){
 				$c->fillable=self::getCategoryContent($c->path);
 			}
