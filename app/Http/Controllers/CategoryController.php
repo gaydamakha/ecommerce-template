@@ -31,6 +31,7 @@ class CategoryController extends Controller
 								->get());
 
 		foreach($categories as $cat){
+			echo $cat;
 			$cat->fillable=self::getCategoryContent($cat->path);
 		}
     	return response()->json($categories);
