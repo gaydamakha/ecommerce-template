@@ -21,7 +21,7 @@ class CategoryController extends Controller
 								->where('path','rlike','^[0-9]$')
 								->get());
 		foreach($categories as $cat){
-			$cat->fillable=$this->getCategoryContent($cat->path);
+			$cat->fillable=self::getCategoryContent($cat->path);
 		}
     	return response()->json($categories);
 	}
@@ -32,7 +32,7 @@ class CategoryController extends Controller
 								->get());
 		if(!empty($content))
 			foreach($content as $c)
-				$c->fillable=$this->getCategoryContent($c->$path);
+				$c->fillable=self::getCategoryContent($c->$path);
 
 
 		return $content; 
