@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name',20);
             $table->string('path',20);
-            $table->integer('count',20);//how much of elements inside
+            $table->integer('count');//how much of elements inside
             $table->timestamps();
         });
     }
