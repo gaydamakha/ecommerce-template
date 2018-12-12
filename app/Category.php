@@ -11,6 +11,8 @@ class Category extends Model {
 
     protected $dates = [];
 
+    protected $path = "";
+
     public static $rules = [
         // Validation rules
     ];

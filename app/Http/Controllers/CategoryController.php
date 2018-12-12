@@ -22,13 +22,14 @@ class CategoryController extends Controller
 								->get());
 		if(!empty($content))
 			foreach($content as $c)
-				$c->fillable=self::getCategoryContent($c->$path);
+				$c->fillable=self::getCategoryContent($c->path);
 		return $content;
 	}		
 	public static function getList(){
 		$categories = array(Category::select('id','name','path')
 								->where('path','rlike','^[0-9]$')
 								->get());
+
 		foreach($categories as $cat){
 			$cat->fillable=self::getCategoryContent($cat->path);
 		}
