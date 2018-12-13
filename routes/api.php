@@ -36,8 +36,8 @@ Route::group(['prefix' => 'categories'], function () use ($router) {
     	return Cc::getList();
 	});
 });
-Route::group(['prefix' => 'cart'], function () use ($router) {
-	Route::get('/',  function () {
+Route::group(['prefix' => 'cart','middleware'=>['web']], function () use ($router) {
+	Route::post('/',  function () {
 		return ['pop','pap'];
 	});
 	Route::get('/count',  function (Request $request) {
