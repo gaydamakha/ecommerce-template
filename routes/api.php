@@ -8,7 +8,7 @@ $router->get('/',  function () {
 });
 $router->group(['prefix' => 'products'], function () use ($router) {
 	$router->get('/',  function () {
-    	return;
+    	return ['pip','pop'];
 	});
 	$router->get('/{category}',  function ($category) {
     	return Ac::getArticlesByCategory($category);
