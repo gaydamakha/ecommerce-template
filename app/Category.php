@@ -15,7 +15,7 @@ class Category extends Model {
         // Validation rules
     ];
     private static function getCategoriesByParent($category,$arrayToAdd){
-        $categories=self::where('name','like',$category['name']);
+        $categories=self::where('name','like',$category);
         if(!empty($categories)){
             foreach($categories as $cat){
                 $arrayToAdd[] = self::getCategoriesByParent($cat,$arrayToAdd);
