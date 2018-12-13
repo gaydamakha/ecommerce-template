@@ -12,12 +12,14 @@ class CartController extends Controller
         if($request->session()->has('cart_count'))
             return response()->json($request->session()->get('cart_count'));
         else
-            return response()->json(0);
+            return response()->json(['count' => 0]);
     }
     public static function addToCart(Request $request,$article_id){
         $article = Article::where('id',$article_id)
                             ->get();
-        $request->session()->put('cart_count',1);
-    }
+        if(!empty($article)){
+            $request->session()->put('cart_count',1);
+            
+        }
 }
 ?>
