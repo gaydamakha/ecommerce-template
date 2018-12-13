@@ -19,7 +19,7 @@ class Category extends Model {
                         ->where('name','like',$category);
         if(!empty($categories)){
             foreach($categories as $cat){
-                $categories[] = self::getAllCategoriesByParent($cat);
+                $categories[] = self::getAllCategoriesByParent($cat['name']);
             }
         }
         echo implode('|',$categories);
