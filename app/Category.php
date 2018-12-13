@@ -14,7 +14,20 @@ class Category extends Model {
     public static $rules = [
         // Validation rules
     ];
-
+    private static function getCategoriesByParent($category,$arrayToAdd){
+        $categories=self::where('name','like',$category['name']);
+        if(!empty($categories)){
+            foreach($categories as $cat){
+                $arrayToAdd[] = self::getCategoriesByParent($cat,$arrayToAdd);
+            }
+        }
+        return $arrayToAdd;
+    }
+    public static function getAllCategoriesByParent($category){
+        $categories = array();
+        $categories[] = self::getCategoriesByParent($category,$categories);
+        return $categories;
+    }
     // Relationships
 
 }

@@ -8,8 +8,9 @@ use PDO;
 class ArticleController extends Controller
 {
     public static function getArticlesByCategory($category){
+        $categories = Category::getAllCategoriesByParent($category);
         $articles = Article::select('name','category','price','avalaible')
-								->where('category','like',$category)
+								->where('category','in',$categories)
                                 ->get();
         return response()->json($articles);
     }
