@@ -43,4 +43,7 @@ Route::group(['prefix' => 'cart','middleware'=>['web']], function () use ($route
 	Route::get('/count',  function (Request $request) {
 		return CartC::count($request);
 	});
+	Route::post('/{article_id}',  function (Request $request,$article_id) {
+		return CartC::addToCart($request,$article_id);
+	});
 });
