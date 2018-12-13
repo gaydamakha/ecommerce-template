@@ -12,7 +12,7 @@
 */
 
 $router->get('/',  function () {
-    return file_get_contents(base_path().'/public/pop.html');
+    return file_get_contents(base_path().'/public/index.html');
 });
 
 ?>
