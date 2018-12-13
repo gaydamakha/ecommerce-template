@@ -3,7 +3,9 @@ Header set Access-Control-Allow-Origin "*"
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-
+    <RequireAny>
+        Require method DELETE GET POST PUT OPTIONS
+    </RequireAny>
     RewriteEngine On
 
     # Handle Authorization Header
