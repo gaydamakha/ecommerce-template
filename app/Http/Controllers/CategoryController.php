@@ -16,8 +16,7 @@ class CategoryController extends Controller
     {
         //
     }
-    public static function getCategoryContent($path)
-	{
+    public static function getCategoryContent($path){
 		$content = Category::select('id','name','path','count')
 								->where('path','rlike',"^".$path.".[0-9]$")
 								->get();
