@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\DB;
 use PDO;
 class ArticleController extends Controller
 {
-    public static function getArticlesByCategory($category){
-        $categories = Category::getAllCategoriesByParent($category);
-        // echo implode('|',$categories);
+    public static function getArticlesByCategory($category_id){
+        $categories = Category::getAllCategoriesById($category_id);
         $articles = Article::select('name','category','price','avalaible')
-								->where('category','in',$categories)
+								->whereIn('category',$categories)
                                 ->get();
         return response()->json($articles);
     }
     public static function getAll(){
-        return Article::all();
+        return Article::select('id','name','category','image_path','price','avalaible')
+                        ->get();
     }
 }
 ?>

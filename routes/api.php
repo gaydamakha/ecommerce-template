@@ -8,10 +8,10 @@ $router->get('/',  function () {
 });
 $router->group(['prefix' => 'products'], function () use ($router) {
 	$router->get('/',  function () {
-    	return Ac::getAll(); 
+    	return Ac::getAll();
 	});
-	$router->get('/{category}',  function ($category) {
-    	return Ac::getArticlesByCategory($category);
+	$router->get('/{category_id}',  function ($category_id) {
+    	return Ac::getArticlesByCategory($category_id);
 	});
 });
 $router->group(['prefix' => 'categories'], function () use ($router) {

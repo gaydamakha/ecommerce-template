@@ -14,19 +14,13 @@ class Category extends Model {
     public static $rules = [
         // Validation rules
     ];
-    public static function getAllCategoriesByParent($category){
-        $categories=self::select('name')
-                        ->where('name','like',$category)
+    public static function getAllCategoriesById($category_id){
+        $c_path=Category::find($category_id);
+
+        $c_path=$c_path['path'];
+        $categories = Category::select('name')
+                        ->where('path','like',"$c_path%")
                         ->get();
-        echo implode("|",$categories);
-        if(!empty($categories)){
-            foreach($categories as $cat){
-                $categories[] = self::getAllCategoriesByParent($cat['name']);
-            }
-        }
-        echo implode("|",$categories);
         return $categories;
     }
-    // Relationships
-
 }
