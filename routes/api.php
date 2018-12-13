@@ -44,6 +44,7 @@ Route::group(['prefix' => 'cart','middleware'=>['web']], function () use ($route
 		return CartC::count($request);
 	});
 	Route::post('/{article_id}',  function (Request $request,$article_id) {
+		echo "pidr!";
 		return CartC::addToCart($request,$article_id);
 	});
 });
