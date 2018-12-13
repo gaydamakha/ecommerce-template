@@ -21,5 +21,5 @@ class CartController extends Controller
             $request->session()->put('cart_count',1);
             
         }
+    }
 }
-?>
