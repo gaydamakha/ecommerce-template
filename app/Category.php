@@ -14,11 +14,11 @@ class Category extends Model {
     public static $rules = [
         // Validation rules
     ];
-    private static function getAllCategoriesByParent($category){
+    public static function getAllCategoriesByParent($category){
         $categories=self::where('name','like',$category);
         if(!empty($categories)){
             foreach($categories as $cat){
-                $categories[] = self::getCategoriesByParent($cat);
+                $categories[] = self::getAllCategoriesByParent($cat);
             }
         }
         return $categories;
