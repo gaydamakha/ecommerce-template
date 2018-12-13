@@ -15,5 +15,8 @@ class ArticleController extends Controller
                                 ->get();
         return response()->json($articles);
     }
+    public static function getAll(){
+        return Article::all();
+    }
 }
 ?>
