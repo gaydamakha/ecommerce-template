@@ -35,7 +35,7 @@ class CategoryController extends Controller
 		foreach($categories as $cat){
 			$cat->categories=self::getCategoryContent($cat['path']);
 		}
-    	return response()->json(array($categories));
+    	return response()->json($categories);
 	}
 	//Function counting available products for one category
 	//will be called every time after updating of "articles" table
