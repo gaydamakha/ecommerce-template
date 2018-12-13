@@ -14,18 +14,13 @@ class Category extends Model {
     public static $rules = [
         // Validation rules
     ];
-    private static function getCategoriesByParent($category,$arrayToAdd){
+    private static function getAllCategoriesByParent($category){
         $categories=self::where('name','like',$category);
         if(!empty($categories)){
             foreach($categories as $cat){
-                $arrayToAdd[] = self::getCategoriesByParent($cat,$arrayToAdd);
+                $categories[] = self::getCategoriesByParent($cat);
             }
         }
-        return $arrayToAdd;
-    }
-    public static function getAllCategoriesByParent($category){
-        $categories = array();
-        $categories[] = self::getCategoriesByParent($category,$categories);
         return $categories;
     }
     // Relationships
