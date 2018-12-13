@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/',  function () {
+Route::get('/*',  function () {
     return file_get_contents(base_path().'/public/index.html');
 });

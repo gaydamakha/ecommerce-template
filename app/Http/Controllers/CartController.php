@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public static function count(Request $request){
-        return $request->session()->all();
+        //$request->session()->push('lol', '100');
+        return response()->json($request->session()->get('lol'));
     }
 }
 ?>

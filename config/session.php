@@ -71,7 +71,7 @@ return [
     | correspond to a connection in your database configuration options.
     |
     */
-
+    'lol' => 555,
     'connection' => env('SESSION_CONNECTION', null),
 
     /*
