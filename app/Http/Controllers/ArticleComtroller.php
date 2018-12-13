@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use PDO;
 class ArticleController extends Controller
 {
-
+    public static function getArticlesByCategory($category){
+        
+    }
 }
 ?>
