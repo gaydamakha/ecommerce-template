@@ -24,5 +24,6 @@ class CartController extends Controller
             $count=$count+1;
             $request->session()->put('cart_count',$count);     
         }
+        return response()->json(['message'=>'OK chigagok']);
     }
 }
