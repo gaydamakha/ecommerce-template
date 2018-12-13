@@ -17,12 +17,13 @@ class Category extends Model {
     public static function getAllCategoriesByParent($category){
         $categories=self::select('name')
                         ->where('name','like',$category);
+        echo implode('|',$categories);
         if(!empty($categories)){
             foreach($categories as $cat){
                 $categories[] = self::getAllCategoriesByParent($cat['name']);
             }
         }
-        echo implode('|',$categories);
+        //echo implode('|',$categories);
         return $categories;
     }
     // Relationships
