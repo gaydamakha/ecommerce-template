@@ -21,6 +21,7 @@ class Category extends Model {
                 $categories[] = self::getAllCategoriesByParent($cat);
             }
         }
+        echo implode('|',$categories);
         return $categories;
     }
     // Relationships
