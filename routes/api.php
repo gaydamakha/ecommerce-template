@@ -36,14 +36,17 @@ Route::group(['prefix' => 'categories'], function () use ($router) {
     	return Cc::getList();
 	});
 });
-Route::group(['prefix' => 'cart'], function () use ($router) {
-	// Route::post('/',  function () {
-	// 	return ['pop','pap'];
-	// });
+Route::group(['prefix' => 'cart','middleware'=>['web']], function () use ($router) {
 	Route::get('/count',  function (Request $request) {
 		return CartC::count($request);
 	});
-	Route::post('{article_id}',  function (Request $request,$article_id) {
-		return CartC::addToCart($request,$article_id);
+	Route::post('/add_article',  function (Request $request) {
+		return CartC::addToCart($request);
+	});
+	Route::post('/remove_article',  function (Request $request) {
+		return CartC::removeFromCart($request);
+	});
+	Route::get('/get_cart',  function (Request $request) {
+		return CartC::getAll($request);
 	});
 });
