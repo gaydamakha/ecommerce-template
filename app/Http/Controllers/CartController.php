@@ -18,9 +18,9 @@ class CartController extends Controller
         $article_id=$request->request->get('article_id');
         $article = Article::where('id',$article_id)
                             ->first();
+        $count=0;
         if($article){
             //add count
-            $count=0;
             if($request->session()->has('cart_count'))
                 $count=$request->session()->get('cart_count');
             $count=$count+1;
@@ -35,7 +35,8 @@ class CartController extends Controller
         return response()->json([
                                     'message'=>$message,
                                     'article_id'=>$article_id,
-                                    'article_name'=>$article['name']
+                                    'article_name'=>$article['name'],
+                                    'count'=>$count
                                 ]);
     }
     public static function removeFromCart(Request $request){
