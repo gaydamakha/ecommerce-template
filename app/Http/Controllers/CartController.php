@@ -32,7 +32,7 @@ class CartController extends Controller
         else{
             $message="This article doesn't exist!";
         }
-        session()->save();
+        $request->session()->save();
         return response()->json([
                                     'message'=>$message,
                                     'article_id'=>$article_id,
@@ -69,7 +69,7 @@ class CartController extends Controller
         else{
             $message="This article doesn't exist!";
         }
-        session()->save();
+        $request->session()->save();
         return response()->json([
                                 'message'=>$message,
                                 'article_id'=>$article_id,
