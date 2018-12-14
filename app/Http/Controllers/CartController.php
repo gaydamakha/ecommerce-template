@@ -22,7 +22,7 @@ class CartController extends Controller
         if($article){
             //add count
             //if($request->session()->has('cart_count'))
-                $count=$request->session()->get('cart_count');
+                $count=(int)$request->session()->get('cart_count');
             $count=$count+1;
             $request->session()->put('cart_count',$count);    
             //add article to session
