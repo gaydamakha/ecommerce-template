@@ -3,7 +3,7 @@ This project implements basic online market with a categories of products and a
 cart.
 
 ## Details
-This setup contains Laravel 5.7.*(check in composer.json) and React 16.8.6(check in package.json)
+This setup contains Laravel 5.5.*(check in composer.json) and React 16.8.6(check in package.json)
 
 The source files for React are located in the /src folder.
 
